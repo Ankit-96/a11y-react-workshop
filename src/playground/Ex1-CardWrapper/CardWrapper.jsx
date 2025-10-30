@@ -29,9 +29,9 @@ export const Card = ({ id, title, description, price, imageSrc }) => {
           className="ex1-card focus-within:ring-2 focus-within:ring-blue-500 reduce-motion" */
       }
       <article
-        className="ex1-card focus:ring-2 focus:ring-blue-500"
-        // aria-labelledby={titleId}
-        // aria-describedby={`${descriptionId} ${priceId}`}
+        className="ex1-card focus-within:ring-2 focus-within:ring-blue-500"
+        aria-labelledby={titleId}
+        aria-describedby={`${descriptionId} ${priceId}`}
       >
         <img
           src={imageSrc}
@@ -40,7 +40,7 @@ export const Card = ({ id, title, description, price, imageSrc }) => {
         />
 
         {/* ✏️ TODO STEP 1: Use a semantic heading tag (<h2>) instead of <div> for better accessibility and page hierarchy */}
-        <div id={titleId} className="ex1-card-title">{title}</div>
+        <h2 id={titleId} className="ex1-card-title">{title}</h2>
 
         <p id={descriptionId} className="ex1-card-description">
           {description}
@@ -53,13 +53,13 @@ export const Card = ({ id, title, description, price, imageSrc }) => {
             Replace the existing className with:
             className="ex1-card-button focus-visible:outline focus-visible:ring-2 focus-visible:ring-blue-500"
         */}
-        <div
+        <button
           onClick={handleAddToCart}
           aria-label="add"
-          className="ex1-card-button outline-none"
+          className="ex1-card-button focus-visible:outline focus-visible:ring-2 focus-visible:ring-blue-500"
         >
           Add to Cart
-        </div>
+        </button>
       </article>
     </li>
   );

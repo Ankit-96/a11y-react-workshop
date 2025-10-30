@@ -42,40 +42,40 @@ const Tree = React.forwardRef(
      * This processes JSX children to extract collection state with metadata
      */
 
-    // const state = useCollectionState({
-    //   children,
-    //   indentSize,
-    //   pattern,
-    //   ariaLabel,
-    //   ariaLabelledBy,
-    //   ariaDescribedBy,
-    //   orientation,
-    //   selectionMode,
-    // });
+    const state = useCollectionState({
+      children,
+      indentSize,
+      pattern,
+      ariaLabel,
+      ariaLabelledBy,
+      ariaDescribedBy,
+      orientation,
+      selectionMode,
+    });
 
     /**
      * ✏️ TODO STEP 2: Uncomment the call to useKeyboardNavigation hook.
      * This sets up keyboard navigation using collection's navigation methods
      */
 
-    // const nav = useKeyboardNavigation({
-    //   collection: state,
-    //   orientation,
-    //   loop: true,
-    // });
+    const nav = useKeyboardNavigation({
+      collection: state,
+      orientation,
+      loop: true,
+    });
 
     /**
      * ✏️ TODO STEP 3: Uncomment the call to useSelection hook.
      * This sets up selection (always call hook, but selectionMode controls behavior)
      */
 
-    // const selection = useSelection({
-    //   selectionMode,
-    //   selectedKeys,
-    //   onChange,
-    //   pattern: "tree",
-    //   label: ariaLabel,
-    // });
+    const selection = useSelection({
+      selectionMode,
+      selectedKeys,
+      onChange,
+      pattern: "tree",
+      label: ariaLabel,
+    });
 
     // ✅ STEP 4: Merge all props using mergeProps utility
     const wrapperProps = mergeProps(

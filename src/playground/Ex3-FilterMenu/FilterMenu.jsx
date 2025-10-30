@@ -1,6 +1,11 @@
 /* eslint-disable */
 import React, { useState } from "react";
-import { PopupOverlay, PLACEMENTS, ARIA_HASPOPUP, usePopup } from "@lib/Overlay";
+import {
+  PopupOverlay,
+  PLACEMENTS,
+  ARIA_HASPOPUP,
+  usePopup,
+} from "@lib/Overlay";
 import Button from "@common/Button";
 import { MenuList } from "@lib/Menu";
 import FilterTrigger from "./FilterTrigger";
@@ -28,11 +33,11 @@ const MenuWithOverlay = () => {
    * for menu (non-modal popup with hasPopup: ARIA_HASPOPUP.MENU)
    */
 
-  // const popupControls = usePopup({
-  //   bodyId: "menu-overlay",
-  //   triggerId: "menu-overlay-trigger",
-  //   hasPopup: ARIA_HASPOPUP.MENU,
-  // });
+  const popupControls = usePopup({
+    bodyId: "menu-overlay",
+    triggerId: "menu-overlay-trigger",
+    hasPopup: ARIA_HASPOPUP.MENU,
+  });
 
   const handleMenuChange = (event, { selectedKeys: newSelectedKeys }) => {
     console.log("Menu selection changed:", newSelectedKeys);
@@ -58,8 +63,8 @@ const MenuWithOverlay = () => {
        */}
 
       <FilterTrigger
-      // trigger={popupControls.trigger}
-      // onClick={popupControls.toggle}
+        trigger={popupControls.trigger}
+        onClick={popupControls.toggle}
       />
 
       {/**
@@ -67,35 +72,36 @@ const MenuWithOverlay = () => {
        * Pass trigger, body, close props and configure placement, trapFocus, and style.
        */}
 
-      {/* <PopupOverlay
+      <PopupOverlay
         trigger={popupControls.trigger}
         body={popupControls.body}
         close={popupControls.close}
         placement={PLACEMENTS.BOTTOM_START}
         trapFocus={false}
         style={{ width: "200px" }}
-      > */}
-
-      <MenuList
-        id="menu-overlay"
-        selectedKeys={selectedKeys}
-        selectionMode="multiple"
-        onChange={handleMenuChange}
-        ariaLabel="Product filters menu"
       >
-        <MenuList.Section key="categories" title="📦 Categories">
-          {categories.map((category) => (
-            <MenuList.Option key={category.id}>{category.name}</MenuList.Option>
-          ))}
-        </MenuList.Section>
+        <MenuList
+          id="menu-overlay"
+          selectedKeys={selectedKeys}
+          selectionMode="multiple"
+          onChange={handleMenuChange}
+          ariaLabel="Product filters menu"
+        >
+          <MenuList.Section key="categories" title="📦 Categories">
+            {categories.map((category) => (
+              <MenuList.Option key={category.id}>
+                {category.name}
+              </MenuList.Option>
+            ))}
+          </MenuList.Section>
 
-        <MenuList.Section key="prices" title="💰 Price Ranges">
-          {priceRanges.map((price) => (
-            <MenuList.Option key={price.id}>{price.name}</MenuList.Option>
-          ))}
-        </MenuList.Section>
-      </MenuList>
-      {/* </PopupOverlay> */}
+          <MenuList.Section key="prices" title="💰 Price Ranges">
+            {priceRanges.map((price) => (
+              <MenuList.Option key={price.id}>{price.name}</MenuList.Option>
+            ))}
+          </MenuList.Section>
+        </MenuList>
+      </PopupOverlay>
 
       <Button
         variant="secondary"
